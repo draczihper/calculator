@@ -27,10 +27,10 @@ const operate = function (operator, num1, num2) {
         case operator == '-':
             subtract(num1, num2);
             break;
-        case operator == '*':
+        case operator == 'x':
             multiply(num1, num2);
             break;
-        case operator == '/':
+        case operator == '÷':
             divide(num1, num2);
             break;
         default:
@@ -50,13 +50,23 @@ const operate = function (operator, num1, num2) {
 
 const toDisplay = function () {
     let operationDisplay = document.querySelector('#operation');
-    let mathOperaton = '';
-    const digitsEl = document.querySelectorAll('.digits');
-    digitsEl.forEach((digit) => {
-        digit.addEventListener('click', () => {
-            const digitToDisplay = Number(digit.textContent);
+    let answerDisplay = document.querySelector('#answer');
+    const digitButtons = document.querySelectorAll('.digits');
+    digitButtons.forEach((digitButton) => {
+        digitButton.addEventListener('click', () => {
+            const digitToDisplay = Number(digitButton.textContent);
             operationDisplay.textContent += digitToDisplay;
-            mathOperaton += digitToDisplay;
+            num2 = Number(operationDisplay.textContent);
+        });
+    });
+    const operatorButtons = document.querySelectorAll('.operators');
+    operatorButtons.forEach((operatorButton) => {
+        operatorButton.addEventListener('click', () => {
+            const operatorToDisplay = operatorButton.textContent;
+            answerDisplay.textContent = operationDisplay.textContent + operatorToDisplay;
+            operator = operatorToDisplay;
+            num1 = Number(operationDisplay.textContent);
+            operationDisplay.textContent = '';
         });
     });
 }
