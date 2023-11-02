@@ -21,20 +21,16 @@ let num2;
 
 const operate = function (operator, num1, num2) {
     switch (operator) {
-        case operator == '+':
-            add(num1, num2);
-            break;
-        case operator == '-':
-            subtract(num1, num2);
-            break;
-        case operator == 'x':
-            multiply(num1, num2);
-            break;
-        case operator == '÷':
-            divide(num1, num2);
-            break;
+        case '+':
+            return add(num1, num2);
+        case '-':
+            return subtract(num1, num2);
+        case 'x':
+            return multiply(num1, num2);
+        case '÷':
+            return divide(num1, num2);
         default:
-            break;
+            return null;
     }
 }
 
@@ -69,5 +65,12 @@ const toDisplay = function () {
             operationDisplay.textContent = '';
         });
     });
+    const equalButton = document.querySelector('#equal');
+    equalButton.addEventListener('click', () => {
+        answerDisplay.textContent += num2;
+        operationDisplay.textContent = '';
+        operationDisplay.textContent = operate(operator, num1, num2);
+    })
 }
 toDisplay();
+
