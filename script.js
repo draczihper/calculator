@@ -58,6 +58,11 @@ const toDisplay = function () {
             currentNum = operationDisplay.textContent;
         });
     });
+    const deleteButton = document.querySelector('#delete');
+    deleteButton.addEventListener('click', () => {
+        currentNum = currentNum.slice(0, -1);
+        operationDisplay.textContent = currentNum;
+    });
     const operatorButtons = document.querySelectorAll('.operators');
     operatorButtons.forEach((operatorButton) => {
         operatorButton.addEventListener('click', () => {
