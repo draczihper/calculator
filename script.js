@@ -52,19 +52,20 @@ const toDisplay = function () {
     operatorButtons.forEach((operatorButton) => {
         operatorButton.addEventListener('click', () => {
             const operatorToDisplay = operatorButton.textContent;
-            if (lastNum === ''){
+            if (lastNum === '') {
                 lastNum = currentNum;
                 operator = operatorToDisplay;
                 answerDisplay.textContent = lastNum + operator;
                 operationDisplay.textContent = ''
             } else {
-                if (operator !== ''){
+                if (operator !== '') {
                     intermediateResult = operate(operator, lastNum, currentNum);
-                    lastNum = intermediateResult;
+                    const roundedIntermediateResult = Math.round(intermediateResult * 1000) / 1000;
+                    lastNum = roundedIntermediateResult;
                     operator = operatorToDisplay;
                     currentNum = '';
                     answerDisplay.textContent = intermediateResult + operatorToDisplay;
-                    operationDisplay.textContent = ''
+                    operationDisplay.textContent = '';
                 }
             }
         });
@@ -73,13 +74,25 @@ const toDisplay = function () {
     equalButton.addEventListener('click', () => {
         if (lastNum !== '' && currentNum !== '' && operator !== '') {
             intermediateResult = operate(operator, lastNum, currentNum);
-            operationDisplay.textContent = intermediateResult;
+            const roundedIntermediateResult = Math.round(intermediateResult * 1000) / 1000;
+            operationDisplay.textContent = roundedIntermediateResult;
             answerDisplay.textContent = '';
             lastNum = intermediateResult;
             currentNum = '';
             operator = '';
         }
     });
+    const clearButton = document.querySelector('#clear');
+    clearButton.addEventListener('click', () => {
+        lastNum = '';
+        operator = '';
+        currentNum = '';
+        intermediateResult = null;
+        answerDisplay.textContent = '';
+        operationDisplay.textContent = '';
+    });
 }
 toDisplay();
+
+
 
