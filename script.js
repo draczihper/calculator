@@ -37,3 +37,27 @@ const operate = function (operator, num1, num2) {
             break;
     }
 }
+
+// document.addEventListener('DOMContentLoaded', function () {
+//     const operationDisplay = document.querySelector('#operation');
+//     const digitsEl = document.querySelectorAll('.digits');
+//     digitsEl.forEach((digit) => {
+//         digit.addEventListener('click', () => {
+//             console.log(digit.textContent);
+//         });
+//     });
+// });
+
+const toDisplay = function () {
+    let operationDisplay = document.querySelector('#operation');
+    let mathOperaton = '';
+    const digitsEl = document.querySelectorAll('.digits');
+    digitsEl.forEach((digit) => {
+        digit.addEventListener('click', () => {
+            const digitToDisplay = Number(digit.textContent);
+            operationDisplay.textContent += digitToDisplay;
+            mathOperaton += digitToDisplay;
+        });
+    });
+}
+toDisplay();
