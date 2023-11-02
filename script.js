@@ -42,9 +42,18 @@ const toDisplay = function () {
     let operationDisplay = document.querySelector('#operation');
     let answerDisplay = document.querySelector('#answer');
     const digitButtons = document.querySelectorAll('.digits');
+    const dotButton = document.querySelector('#dot');
+    let hasDot = false;
     digitButtons.forEach((digitButton) => {
         digitButton.addEventListener('click', () => {
-            const digitToDisplay = digitButton.textContent;
+            const digitToDisplay = digitButton.textContent; 
+            if (digitToDisplay === '.' && hasDot) {
+                return;
+            }
+            if(digitToDisplay === '.') {
+                hasDot = true;
+                dotButton.disabled = true;
+            }
             operationDisplay.textContent += digitToDisplay;
             currentNum = operationDisplay.textContent;
         });
@@ -96,7 +105,9 @@ const toDisplay = function () {
         lastNum = '';
         operator = '';
         currentNum = '';
+        hasDot = false;
         intermediateResult = null;
+        dotButton.disabled = false;
         answerDisplay.textContent = '';
         operationDisplay.textContent = '';
     });
