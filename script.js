@@ -31,7 +31,8 @@ const operate = function (operator, lastNum, currentNum) {
         case 'x':
             return multiply(lastNum, currentNum);
         case '÷':
-            return divide(lastNum, currentNum);
+            if (currentNum === 0) return null
+            else return divide(lastNum, currentNum);
         default:
             return null;
     }
@@ -60,12 +61,16 @@ const toDisplay = function () {
             } else {
                 if (operator !== '') {
                     intermediateResult = operate(operator, lastNum, currentNum);
-                    const roundedIntermediateResult = Math.round(intermediateResult * 1000) / 1000;
-                    lastNum = roundedIntermediateResult;
-                    operator = operatorToDisplay;
-                    currentNum = '';
-                    answerDisplay.textContent = intermediateResult + operatorToDisplay;
-                    operationDisplay.textContent = '';
+                    if (operator === '÷' && currentNum == 0) {
+                        operationDisplay.textContent = 'You can not divide by 0!';
+                    } else {
+                        const roundedIntermediateResult = Math.round(intermediateResult * 1000) / 1000;
+                        lastNum = roundedIntermediateResult;
+                        operator = operatorToDisplay;
+                        currentNum = '';
+                        answerDisplay.textContent = intermediateResult + operatorToDisplay;
+                        operationDisplay.textContent = '';
+                    }
                 }
             }
         });
@@ -73,13 +78,17 @@ const toDisplay = function () {
     const equalButton = document.querySelector('#equal');
     equalButton.addEventListener('click', () => {
         if (lastNum !== '' && currentNum !== '' && operator !== '') {
+            answerDisplay.textContent = lastNum + operator + currentNum + '=';
             intermediateResult = operate(operator, lastNum, currentNum);
-            const roundedIntermediateResult = Math.round(intermediateResult * 1000) / 1000;
-            operationDisplay.textContent = roundedIntermediateResult;
-            answerDisplay.textContent = '';
-            lastNum = intermediateResult;
-            currentNum = '';
-            operator = '';
+            if (operator === '÷' && currentNum == 0) {
+                operationDisplay.textContent = 'You can not divide by 0!';
+            } else {
+                const roundedIntermediateResult = Math.round(intermediateResult * 1000) / 1000;
+                operationDisplay.textContent = roundedIntermediateResult;
+                lastNum = roundedIntermediateResult;
+                currentNum = '';
+                operator = '';
+            }
         }
     });
     const clearButton = document.querySelector('#clear');
