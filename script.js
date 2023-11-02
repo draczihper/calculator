@@ -58,11 +58,6 @@ const toDisplay = function () {
             currentNum = operationDisplay.textContent;
         });
     });
-    const deleteButton = document.querySelector('#delete');
-    deleteButton.addEventListener('click', () => {
-        currentNum = currentNum.slice(0, -1);
-        operationDisplay.textContent = currentNum;
-    });
     const operatorButtons = document.querySelectorAll('.operators');
     operatorButtons.forEach((operatorButton) => {
         operatorButton.addEventListener('click', () => {
@@ -104,6 +99,17 @@ const toDisplay = function () {
                 operator = '';
             }
         }
+    });
+    const deleteButton = document.querySelector('#delete');
+    deleteButton.addEventListener('click', () => {
+        if (currentNum.length > 0) {
+            currentNum = currentNum.slice(0, -1);
+        // } else if (operator > 0){
+        //     operator = '';
+        } else if (lastNum > 0) {
+            lastNum = lastNum.slice(0, -1);
+        }
+        operationDisplay.textContent = operationDisplay.textContent.slice(0, -1);
     });
     const clearButton = document.querySelector('#clear');
     clearButton.addEventListener('click', () => {
