@@ -1,5 +1,6 @@
 /* FONTS */
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&family=Roboto:wght@400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Roboto:wght@400;700&family=Victor+Mono:wght@400;600;700&display=swap');
+
 
 * {
     margin: 0;
@@ -61,6 +62,14 @@ body {
 
 }
 
+#logo {
+    padding: 20px 0;
+    font-family: 'Victor Mono', monospace;
+    font-size: 16px;
+    font-weight: 700;
+    font-style: italic;
+}
+
 button {
     all: unset;
     font-family: 'Roboto Mono', monospace;
@@ -92,6 +101,8 @@ button:hover {
 .number-operator {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 .number {
