@@ -75,7 +75,7 @@ const toDisplay = function () {
                 operator = operatorToDisplay;
             }
             answerDisplay.textContent = lastNum + operator;
-            operationDisplay.textContent = ''
+            operationDisplay.textContent = '';
         } else {
             if (operator !== '') {
                 intermediateResult = operate(operator, lastNum, currentNum);
