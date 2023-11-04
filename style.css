@@ -1,5 +1,5 @@
 /* FONTS */
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&family=Roboto:wght@400;500;600;700&display=swap');
 
 * {
     margin: 0;
@@ -23,4 +23,37 @@ body {
     background-color: #B4B4B4;
     padding: 30px;
     border-radius: 10px;
+    width: 400px;
+    height: 500px;
+}
+
+.display{
+    height: 100px;
+    border-radius: 10px;
+    background-color: #fff;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: flex-end;
+    padding: 10px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 28px;
+    font-weight: 500;
+}
+
+.display #answer {
+
+
+}
+
+.display #operation {
+
+
+}
+
+.keys-container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
 }
