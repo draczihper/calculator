@@ -43,24 +43,13 @@ body {
 }
 
 .display #answer {
-
-
+    font-weight: 500;
 }
 
 .display #operation {
-
-
+    font-weight: 600;
 }
 
-.keys-container {
-    /* display: flex;
-    justify-content: center;
-    align-content: center; */
-}
-
-.keys {
-
-}
 
 #logo {
     padding: 20px 0;
